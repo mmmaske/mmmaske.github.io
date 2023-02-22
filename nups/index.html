@@ -80,18 +80,18 @@
 							</article>
 
 						<!-- Menu -->
-						<article id="menu">
-							<h2 class="major">Menu</h2>
-							<span class="image main"><img src="images/bg5.jpg" alt="" /></span>
-							<p>We will be serving food. You can eat the food as it is expected to be edible.</p>
-							<ul>
-								<li>Rice</li>
-								<li>Ulam (masarap)</li>
-								<li>Dessert</li>
-								<li>Drinks</li>
-								<li>Free flowing water</li>
-							</ul>
-						</article>
+							<article id="menu">
+								<h2 class="major">Menu</h2>
+								<span class="image main"><img src="images/bg5.jpg" alt="" /></span>
+								<p>We will be serving food. You can eat the food as it is expected to be edible.</p>
+								<ul>
+									<li>Rice</li>
+									<li>Ulam (masarap)</li>
+									<li>Dessert</li>
+									<li>Drinks</li>
+									<li>Free flowing water</li>
+								</ul>
+							</article>
 
 						<!-- Schedule -->
 							<article id="schedule">
@@ -108,6 +108,7 @@
 									Latecomers will have their identification <i>(driver's license/passport/senior citizen card)</i> confiscated from them and a pink slip will be issued to be signed by your parents or guardian.
 								</p>
 								<table>
+									<tr><td>03:00</td><td>REM sleep</td></tr>
 									<tr><td>08:00</td><td>wake up</td></tr>
 									<tr><td>08:15</td><td>get dressed</td></tr>
 									<tr><td>09:00</td><td>contemplate mysteries of life and the universe</td></tr>
@@ -120,8 +121,9 @@
 									<tr><td>17:00</td><td>travel to reception (account for traffic)</td></tr>
 									<tr><td>17:30</td><td>arrive at reception</td></tr>
 									<tr><td>17:31</td><td>get wasted</td></tr>
-									<tr><td>17:32</td><td>dance like nobody's watching</td></tr>
-									<tr><td>17:33</td><td>pass out</td></tr>
+									<tr><td>17:32</td><td>gonna dance with somebody</td></tr>
+									<tr><td>17:33</td><td>gonna feel the heat with somebody</td></tr>
+									<tr><td>17:35</td><td>pass out</td></tr>
 									<tr><td>21:59</td><td>party like there's no tomorrow</td></tr>
 									<tr><td>22:00</td><td>stagger home (don't drink and drive)</td></tr>
 								</table>
@@ -179,6 +181,34 @@
 				if(request_name != "") {
 					document.getElementById("name").setAttribute("readonly",true);
 					document.getElementById("name").value = request_name;
+				}
+
+				function send_rsvp() {
+					var input_name = document.getElementById('name');
+					var input_rsvp = document.getElementById('response');
+					var input_rsvp_selected = input_rsvp.options[input_rsvp.selectedIndex].value;
+					var input_message = document.getElementById('message');
+
+					var dataString = {
+						"name":input_name,
+						"response":input_rsvp_selected,
+						"message":input_message,
+					};
+
+					$.ajax({
+					type: "POST",
+					url: "",
+					data: dataString,
+					cache: false,
+					success: function(html) {
+						if(html.result) { // success
+						}
+						else { // fail
+						}
+					},
+					error: function(html) { // connection error
+					}
+				});
 				}
 			</script>
 	</body>
