@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -152,7 +153,7 @@
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="button" onclick="send_rsvp();" value="Send" class="primary" /></li>
+										<li><input type="button" onclick="send_rsvp();" value="Send" class="primary" id="btn_send" /></li>
 									</ul>
 								</form>
 							</article>
@@ -174,6 +175,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 			<script>
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
@@ -189,6 +191,7 @@
 				// }
 
 				function send_rsvp() {
+					document.getElementById("btn_send").style.display = "none";
 					var input_name = document.getElementById('name');
 					var input_rsvp = document.getElementById('response');
 					var input_rsvp_selected = input_rsvp.options[input_rsvp.selectedIndex].value;
@@ -204,17 +207,25 @@
 					type: "GET",
 					url: "http://mmmaske.com/index.php/Home/rsvp/",
 					data: dataString,
-					dataType: 'jsonp',
+					dataType: 'json',
 					crossDomain: true,
+					contentType: 'application/x-www-form-urlencoded',
 					cache: false,
 					success: function(html) {
-						console.log(html);
-						if(html.result) { // success
+						document.getElementById("btn_send").style.display = "block";
+						if(html.response) { // success
+							var msg = "";
+							if(input_rsvp_selected=="YES") msg = "We hope to see you there!";
+							else msg = "Thank you for your response!";
+							toastr["success"](msg,"RSVP Sent!");
 						}
 						else { // fail
+							toastr["error"]("Please try again.","RSVP not sent!");
 						}
 					},
 					error: function(html) { // connection error
+						document.getElementById("btn_send").style.display = "block";
+						toastr["error"]("Please try again.","RSVP not sent!");
 					}
 				});
 				}
