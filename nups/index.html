@@ -152,7 +152,7 @@
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="button" value="Send" class="primary" /></li>
+										<li><input type="button" onclick="send_rsvp();" value="Send" class="primary" /></li>
 									</ul>
 								</form>
 							</article>
@@ -178,10 +178,15 @@
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
 				var request_name = urlParams.get('name');
-				if(request_name != "") {
-					document.getElementById("name").setAttribute("readonly",true);
-					document.getElementById("name").value = request_name;
-				}
+				// console.log(request_name);
+				// if(request_name !== "") {
+				// 	console.log('name found');
+				// 	document.getElementById("name").setAttribute("readonly",true);
+				// 	document.getElementById("name").value = request_name;
+				// }
+				// else if (request_name === NULL) {
+				// 	console.log('name not found');
+				// }
 
 				function send_rsvp() {
 					var input_name = document.getElementById('name');
@@ -190,17 +195,20 @@
 					var input_message = document.getElementById('message');
 
 					var dataString = {
-						"name":input_name,
-						"response":input_rsvp_selected,
-						"message":input_message,
+						"full_name":input_name.value,
+						"rsvp_reply":input_rsvp_selected,
+						"message":input_message.value,
 					};
 
 					$.ajax({
-					type: "POST",
-					url: "",
+					type: "GET",
+					url: "http://mmmaske.com/index.php/Home/rsvp/",
 					data: dataString,
+					dataType: 'jsonp',
+					crossDomain: true,
 					cache: false,
 					success: function(html) {
+						console.log(html);
 						if(html.result) { // success
 						}
 						else { // fail
