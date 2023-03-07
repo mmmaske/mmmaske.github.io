@@ -7,6 +7,20 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<script type="text/javascript">
+			var _paq = window._paq || [];
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function() {
+			var u="//mmmaske.com/analytics/";
+			_paq.push(['setTrackerUrl', u+'matomo.php']);
+			_paq.push(['setSiteId', '3']);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+			})();
+		</script>
+		<noscript><p><img src="//mmmaske.com/analytics/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -135,6 +149,14 @@
 								<h2 class="major">RSVP</h2>
 								<form method="post" action="#">
 									<div class="fields">
+										<div id="seat_requirement_container" class="field">
+											<p>We have reserved <span id="seat_quantity"></span> seats for you and your party.</p>
+											<label for="seat_requirement">How many seats will you be needing?</label>
+
+											<select id="seat_requirement" name="seat_requirement" class="">
+												<option value="">-</option>
+											</select>
+										</div>
 										<div class="field half">
 											<label for="name">Full Name</label>
 											<input type="text" name="name" id="name" />
@@ -166,6 +188,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<!--p class="copyright">&copy;</a>.</p-->
+						<img src="http://mmmaske.com/analytics/matomo.php?idsite=3&amp;rec=1" style="border:0" alt="" />
 					</footer>
 
 			</div>
@@ -180,65 +203,6 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-			<script>
-				const queryString = window.location.search;
-				const urlParams = new URLSearchParams(queryString);
-				var request_name = urlParams.get('name');
-				// console.log(request_name);
-				// if(request_name !== "") {
-				// 	console.log('name found');
-				// 	document.getElementById("name").setAttribute("readonly",true);
-				// 	document.getElementById("name").value = request_name;
-				// }
-				// else if (request_name === NULL) {
-				// 	console.log('name not found');
-				// }
-
-				function send_rsvp() {
-					document.getElementById("btn_send").style.display = "none";
-					var input_name = document.getElementById('name');
-					var input_rsvp = document.getElementById('response');
-					var input_contact = document.getElementById('contact');
-					var input_rsvp_selected = input_rsvp.options[input_rsvp.selectedIndex].value;
-					var input_message = document.getElementById('message');
-
-					var dataString = {
-						"full_name":input_name.value,
-						"rsvp_reply":input_rsvp_selected,
-						"contact":input_contact.value,
-						"message":input_message.value,
-					};
-
-					$.ajax({
-					type: "GET",
-					url: "http://mmmaske.com/index.php/Home/rsvp/",
-					data: dataString,
-					dataType: 'json',
-					crossDomain: true,
-					contentType: 'application/x-www-form-urlencoded',
-					cache: false,
-					success: function(html) {
-						if(html.response) { // success
-							document.getElementById("name").setAttribute("disabled",true);
-							document.getElementById("response").setAttribute("disabled",true);
-							document.getElementById("contact").setAttribute("disabled",true);
-							document.getElementById("message").setAttribute("disabled",true);
-							var msg = "";
-							if(input_rsvp_selected=="YES") msg = "We hope to see you there!";
-							else msg = "Thank you for your response!";
-							toastr["success"](msg,"RSVP Sent!");
-						}
-						else { // fail
-							document.getElementById("btn_send").style.display = "block";
-							toastr["error"]("Please try again.","RSVP not sent!");
-						}
-					},
-					error: function(html) { // connection error
-						document.getElementById("btn_send").style.display = "block";
-						toastr["error"]("Please try again.","RSVP not sent!");
-					}
-				});
-				}
-			</script>
+			<script src="assets/js/custom.js"></script>
 	</body>
 </html>
