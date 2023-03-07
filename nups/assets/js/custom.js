@@ -4,6 +4,7 @@ var request_name = urlParams.get('name');
 var guest_id = urlParams.get('ref');
 if (guest_id === null) {
     document.getElementById("seat_requirement_container").style.display = "none";
+    document.getElementById("special_role").style.display = "none";
 }
 else {
     get_spreadsheet_row(guest_id);
@@ -27,11 +28,12 @@ function get_spreadsheet_row(id="") {
                         for(i=1; i<=seats; i++){
                             var x = document.getElementById("seat_requirement");
                             var option = document.createElement("option");
-                            option.text = i;
+                            option.text = option.value = i;
                             x.add(option);
                         }
                         document.getElementById("seat_requirement_container").style.display = "block";
                         document.getElementById('seat_quantity').innerHTML = seats;
+                        document.getElementById('seat_requirement').value = seats;
                     }
                 }
             });
