@@ -1659,3 +1659,41 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+		.grecaptcha-badge {
+			position: fixed !important;
+			width: 70px !important;
+			top: 0% !important;
+			left: 0% !important;
+		}
+
+		.vertical-center {
+			vertical-align: middle;
+		}
+
+		.img-overlay {
+			width:92%;
+			text-align:center;
+			z-index: 1;
+			position:absolute;
+			text-shadow: 2px 2px black;
+			padding:1%;
+			background: rgba(0, 0, 0, 0.5) /* background black with 50% opacity */
+		}
+
+		.paypalform input {
+			/*width:50px;*/
+			background-color:#FFF;
+			color:#000;
+		}
+		.paypalform {
+			margin:0px auto 10px;
+			padding:10px;
+			color:#000;
+			font-size:.75em;
+			background-color:#FFF;
+			/* -moz-linear-gradient(center top , #FA0 0%, #FA0 80%, #FFF8FC 100%) repeat scroll 0% 0% transparent; */
+			border-radius:5px;
+			width:170px;
+			box-shadow: 0px 0px 7px 1px #E6E600;
+		}

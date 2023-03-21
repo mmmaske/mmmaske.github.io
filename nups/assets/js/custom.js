@@ -4,7 +4,6 @@ var request_name = urlParams.get('name');
 var guest_id = urlParams.get('ref');
 if (guest_id === null) {
     document.getElementById("seat_requirement_container").style.display = "none";
-    document.getElementById("special_role").style.display = "none";
 }
 else {
     get_spreadsheet_row(guest_id);
@@ -44,10 +43,15 @@ function get_spreadsheet_row(id="") {
     });
 }
 
-function send_rsvp() {
+function onSubmit(token) {
+    send_rsvp(token);
+  }
+
+
+function send_rsvp(token) {
     document.getElementById("btn_send").style.display = "none";
     var input_name = document.getElementById('name');
-    var input_contact = document.getElementById('contact');
+    var input_contact = document.getElementById('contactinfo');
     var input_rsvp = document.getElementById('response');
     var input_rsvp_selected = input_rsvp.options[input_rsvp.selectedIndex].value;
     var input_seatr = document.getElementById('response');
@@ -60,7 +64,10 @@ function send_rsvp() {
         "contact":input_contact.value,
         "seat_requirement":input_seatr_selected,
         "message":input_message.value,
+        "recaptchaResponse":token,
     };
+
+    console.log(dataString);
 
     $.ajax({
         type: "GET",
@@ -75,7 +82,7 @@ function send_rsvp() {
                 document.getElementById("name").setAttribute("disabled",true);
                 document.getElementById("response").setAttribute("disabled",true);
                 document.getElementById("seat_requirement").setAttribute("disabled",true);
-                document.getElementById("contact").setAttribute("disabled",true);
+                document.getElementById("contactinfo").setAttribute("disabled",true);
                 document.getElementById("message").setAttribute("disabled",true);
                 var msg = "";
                 if(input_rsvp_selected=="YES") msg = "We hope to see you there!";
@@ -83,11 +90,13 @@ function send_rsvp() {
                 toastr["success"](msg,"RSVP Sent!");
             }
             else { // fail
+                console.log(html);
                 document.getElementById("btn_send").style.display = "block";
                 toastr["error"]("Please try again.","RSVP not sent!");
             }
         },
         error: function(html) { // connection error
+            console.log(html);
             document.getElementById("btn_send").style.display = "block";
             toastr["error"]("Please try again.","RSVP not sent!");
         }
