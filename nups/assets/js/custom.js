@@ -4,6 +4,9 @@ var request_name = urlParams.get('name');
 var guest_id = urlParams.get('ref');
 if (guest_id === null) {
     document.getElementById("seat_requirement_container").style.display = "none";
+    //document.getElementById("rsvp_link").style.display = "none";
+    //document.getElementById("location_link").style.display = "none";
+    //toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Blank Link ID");
 }
 else {
     get_spreadsheet_row(guest_id);
@@ -39,6 +42,7 @@ function get_spreadsheet_row(id="") {
         },
         error: function (err) {
             console.log(err.status);
+            toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Broken Link");
         }
     });
 }
