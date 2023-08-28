@@ -25,6 +25,7 @@ function get_spreadsheet_row(id="") {
                 var row = ioo.split(",");
                 if(row[1]==id) {
                     var fullname = row[3]+', '+row[2];
+                    var fullname_rev = row[2]+' '+row[3];
                     document.getElementById('name').value = fullname;
                     document.getElementById("name").setAttribute("readonly",true);
 
@@ -44,6 +45,7 @@ function get_spreadsheet_row(id="") {
                         document.getElementById("giftguide_link").style.display = "list-item";
                         document.getElementById('seat_quantity').innerHTML = seats;
                         document.getElementById('seat_requirement').value = seats;
+                        toastr["info"]("The details are ready for you to view. Hope to see you there!","Hi "+fullname_rev+"!");
                     }
                 }
             });
