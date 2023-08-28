@@ -4,8 +4,11 @@ var request_name = urlParams.get('name');
 var guest_id = urlParams.get('ref');
 if (guest_id === null) {
     document.getElementById("seat_requirement_container").style.display = "none";
-    //document.getElementById("rsvp_link").style.display = "none";
-    //document.getElementById("location_link").style.display = "none";
+    document.getElementById("rsvp_link").style.display = "none";
+    document.getElementById("location_link").style.display = "none";
+    document.getElementById("entourage_link").style.display = "none";
+    document.getElementById("attire_link").style.display = "none";
+    document.getElementById("giftguide_link").style.display = "none";
     //toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Blank Link ID");
 }
 else {
@@ -34,6 +37,11 @@ function get_spreadsheet_row(id="") {
                             x.add(option);
                         }
                         document.getElementById("seat_requirement_container").style.display = "block";
+                        document.getElementById("rsvp_link").style.display = "list-item";
+                        document.getElementById("location_link").style.display = "list-item";
+                        document.getElementById("entourage_link").style.display = "list-item";
+                        document.getElementById("attire_link").style.display = "list-item";
+                        document.getElementById("giftguide_link").style.display = "list-item";
                         document.getElementById('seat_quantity').innerHTML = seats;
                         document.getElementById('seat_requirement').value = seats;
                     }
@@ -42,6 +50,11 @@ function get_spreadsheet_row(id="") {
         },
         error: function (err) {
             console.log(err.status);
+            document.getElementById("rsvp_link").style.display = "none";
+            document.getElementById("location_link").style.display = "none";
+            document.getElementById("entourage_link").style.display = "none";
+            document.getElementById("attire_link").style.display = "none";
+            document.getElementById("giftguide_link").style.display = "none";
             toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Broken Link");
         }
     });
