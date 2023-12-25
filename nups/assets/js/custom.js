@@ -1,15 +1,24 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+var hide_links = false;
 var request_name = urlParams.get('name');
 var guest_id = urlParams.get('ref');
 if (guest_id === null) {
-    document.getElementById("seat_requirement_container").style.display = "none";
-    document.getElementById("rsvp_link").style.display = "none";
-    document.getElementById("location_link").style.display = "none";
-    document.getElementById("entourage_link").style.display = "none";
-    document.getElementById("attire_link").style.display = "none";
-    document.getElementById("giftguide_link").style.display = "none";
-    //toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Blank Link ID");
+    if(hide_links == true) {
+        document.getElementById("seat_requirement_container").style.display = "none";
+        document.getElementById("rsvp_link").style.display = "none";
+        document.getElementById("location_link").style.display = "none";
+        document.getElementById("entourage_link").style.display = "none";
+        document.getElementById("attire_link").style.display = "none";
+        document.getElementById("giftguide_link").style.display = "none";
+        //toastr["info"]("Please request a custom link from the wedding party to access the rest of the site.","Blank Link ID");
+    }
+    else {
+        var x = document.getElementById("seat_requirement");
+        var option = document.createElement("option");
+        option.text = option.value = 1;
+        x.add(option);
+    }
 }
 else {
     get_spreadsheet_row(guest_id);
