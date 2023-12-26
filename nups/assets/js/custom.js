@@ -35,10 +35,10 @@ function get_spreadsheet_row(id="") {
                 if(row[1]==id) {
                     var fullname = row[3]+', '+row[2];
                     var fullname_rev = row[2]+' '+row[3];
-                    document.getElementById('name').value = fullname;
+                    document.getElementById('name').value = fullname_rev;
                     document.getElementById("name").setAttribute("readonly",true);
 
-                    var seats = row[4];
+                    var seats = row[5];
                     if(seats > 0) {
                         for(i=1; i<=seats; i++){
                             var x = document.getElementById("seat_requirement");
