@@ -229,32 +229,26 @@
 				}
                 function createHTML() {
                     var html = "";
-                    $.ajax({
-                        url: "images/fulls",
-                        dataType: "html",
-                        success: function(data){
-                            var images = fileList();
-							var ctr=0;
-                            for (var key in images) {
-                                var image = images[key];
+					var images = fileList();
+					var ctr=0;
+					for (var key in images) {
+						var image = images[key];
 
-								thumb = '<article class="item thumb span-2 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
-								var thumbcontent = document.getElementById("thumbs");
-								if(ctr==0) {
-									thumbcontent.innerHTML += thumb;
-								}
+						thumb = '<article class="item thumb span-2 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
+						var thumbcontent = document.getElementById("thumbs");
+						if(ctr==0) {
+							thumbcontent.innerHTML += thumb;
+						}
 
-								title = '<article class="item thumb span-1 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
-								var titlecontent = document.getElementById("titles");
-								if(ctr!=0) {
-									titlecontent.innerHTML += title;
-								}
+						title = '<article class="item thumb span-1 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
+						var titlecontent = document.getElementById("titles");
+						if(ctr!=0) {
+							titlecontent.innerHTML += title;
+						}
 
-								ctr++;
-								if(ctr==3) ctr=0;
-                            }
-                        }
-                    });
+						ctr++;
+						if(ctr==3) ctr=0;
+					}
                     return true;
                 }
                 createHTML();
