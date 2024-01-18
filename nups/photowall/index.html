@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<!--
+	Parallelism by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AA&amp;MM</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+
+						<!-- Items -->
+							<div id="titles" class="items">
+
+								<!--div class="item intro span-2">
+									<h1>Parallelism</h1>
+									<p>A responsive portfolio site<br />
+									template by HTML5 UP</p>
+								</div>
+
+								<article class="item thumb span-1">
+									<h2>You really got me</h2>
+									<a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-2">
+									<h2>Ad Infinitum</h2>
+									<a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-1">
+									<h2>Different.</h2>
+									<a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-1">
+									<h2>Elysium</h2>
+									<a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-3">
+									<h2>Kingdom of the Wind</h2>
+									<a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-1">
+									<h2>The Pursuit</h2>
+									<a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-2">
+									<h2>Boundless</h2>
+									<a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt=""></a>
+								</article>
+
+								<article class="item thumb span-2">
+									<h2>The Spectators</h2>
+									<a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt=""></a>
+								</article-->
+
+							</div>
+
+						<!-- Items -->
+							<div id="thumbs" class="items">
+
+								<!--article class="item thumb span-3"><h2>Kingdom of the Wind</h2><a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a></article>
+								<article class="item thumb span-1"><h2>The Pursuit</h2><a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt=""></a></article>
+								<article class="item thumb span-2"><h2>Boundless</h2><a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt=""></a></article>
+								<article class="item thumb span-2"><h2>The Spectators</h2><a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt=""></a></article>
+								<article class="item thumb span-1"><h2>You really got me</h2><a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""></a></article>
+								<article class="item thumb span-2"><h2>Ad Infinitum</h2><a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt=""></a></article>
+								<article class="item thumb span-1"><h2>Different.</h2><a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt=""></a></article>
+								<article class="item thumb span-2"><h2>Kingdom of the Wind</h2><a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""></a></article>
+								<article class="item thumb span-1"><h2>Elysium</h2><a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt=""></a></article-->
+
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<section>
+							<p><strong>Here's where we'll share our smiles!</strong> Our day was made much more special with your presence. Thank you for coming! Here are some of our favorite shots from the wedding and the events leading up to it.</p>
+						</section>
+						<section>
+							<ul class="copyright">
+								<li>&copy; Powered by Mark's web development skills.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</section>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script>
+                // get images from page
+                function getImages(page) {
+                    var htmlobj = $(page);
+                    var links = htmlobj.find("a");
+                    var images = [];
+                    var ctr = 0;
+
+                    for (var key in links) {
+                        if (links.hasOwnProperty(key)) {
+                            if(ctr>=5) {
+                                images[key] = links[key];
+                            }
+                            ctr++;
+                        }
+                    }
+                    return images;
+                }
+                function createHTML() {
+                    var html = "";
+                    $.ajax({
+                        url: "images/fulls",
+                        dataType: "html",
+                        success: function(data){
+                            var images = getImages(data);
+							var ctr=0;
+                            for (var key in images) {
+                                var image = images[key].innerHTML;
+
+								thumb = '<article class="item thumb span-2 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
+								var thumbcontent = document.getElementById("thumbs");
+								if(ctr==0) {
+									thumbcontent.innerHTML += thumb;
+								}
+
+								title = '<article class="item thumb span-1 lazy"><a href="images/fulls/'+image+'" class="image" target="_new"><img src="images/thumbs/'+image+'" alt=""></a></article>';
+								var titlecontent = document.getElementById("titles");
+								if(ctr!=0) {
+									titlecontent.innerHTML += title;
+								}
+
+								ctr++;
+								if(ctr==3) ctr=0;
+                            }
+                        }
+                    });
+                    return true;
+                }
+                createHTML();
+            </script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lazy.min.js"></script>
+			<script>
+			$(function() {
+				$('.lazy').Lazy();
+			});
+			</script>
+
+	</body>
+</html>
