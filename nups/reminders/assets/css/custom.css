@@ -1,0 +1,44 @@
+body {
+    /* background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../images/AFT28329.JPG") !important; */
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../images/AFT28183.jpg") !important;
+    background-position: top !important;
+    /* background-size: contain !important; */
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+#header.alt, #header.alt h1 {
+    font-weight: bold;
+}
+
+.spotlight .image, .spotlight .image img {
+    border-radius: 20%;
+}
+
+.icon.major, .icon.major img {
+    border-radius: 20%;
+}
+
+.spotlight .nav_links .image {
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0%;
+    width:50px;
+}
+
+.image.nav {
+    width:25px;
+    padding:0px;
+    margin:0px;
+}
+
+#header p {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5%;
+    padding: 1em;
+}
+
+#main {
+    background-color: rgba(255,255,255,0.88);
+}
