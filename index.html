@@ -31,21 +31,8 @@
 		<meta property="og:image:height" content="200" />
 		<link rel="image_src" href="http://graph.facebook.com/1386188468347302/picture?type=large" >
 		<meta name="description" content="Functional and flexible web application development" />
-		<script type="text/javascript">
-          var _paq = window._paq || [];
-          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="//mmmaske.com/analytics/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '1']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-        <style>
-            #background canvas {
+    <style>
+      #background canvas {
 				display: block;
 				vertical-align: bottom;
 				-webkit-transform: scale(1);
@@ -63,7 +50,7 @@
 				top: 0;
 				left: 0
 			}
-        </style>
+    </style>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -83,13 +70,17 @@
 						<!-- Content -->
 						<section id="content">
 							<header class="major">
-	<h2>Mark Maske</h2>
-	<p>Professional Web Developer. Amateur Systems Administrator. All-around Computer Dude.</p>
-</header>
+                <img src="assets/mmmaske.svg" />
+                <div class="clearfix"></div>
+              </header>
 
+<section class="col-md-7 col-md-offset-2">
+  <p>Professional Web Developer. Amateur Systems Administrator. All-around Computer Dude.</p>
+</section>
 <section class="col-md-7 col-md-offset-2">
 	<h3>Hi there!</h3>
 	<p>You've reached my homepage. I am an I.T. professional, and I enjoy working up efficient and inventive solutions to wasteful problems.</p>
+  <p>Specializing in backend and web development, I've implemented applications for both small and medium businesses ranging from static single-page-apps to point-of-sale stations to multiple department encompassing business automation systems.</p>
 	<p>This site is indefinitely under construction. I can be reached at <a href='mailto:admin@mmmaske.com'>admin@mmmaske.com</a> for any immediate concerns.</p>
 </section>
 <div class="clearfix">&nbsp;</div>						</section>
@@ -97,10 +88,11 @@
 				</div>
 				<footer id="footer">
 					<ul class="icons">
-						<li><a href="https://twitter.com/mmjmaske" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://facebook.com/mmmaske" class="icon alt fa-facebook" ><span class="label">Facebook</span></a></li>
+						<li><a href="https://twitter.com/mmjmaske" class="icon alt fa-twitter" target="_new"><span class="label">Twitter</span></a></li>
+						<li><a href="https://facebook.com/mmmaske" class="icon alt fa-facebook" target="_new"><span class="label">Facebook</span></a></li>
 						<!--li><div class="fb-like" data-share="true"></div></li-->
-						<li><a href="https://ph.linkedin.com/in/mmmaske" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://ph.linkedin.com/in/mmmaske" class="icon alt fa-linkedin" target="_new"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/mmmaske" class="icon alt fa-github" target="_new"><span class="label">GitHub</span></a></li>
 						<li><a href="mailto:admin@mmmaske.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 					<ul class="copyright">
@@ -121,30 +113,11 @@
 		<script src="assets/jquery.scrolly.min.js"></script>
 		<script src="assets/jquery.dropotron.min.js"></script>
 		<script src="assets/toastr.js"></script>
-		<!--script src="assets/jquery.fullPage.min.js"></script-->
 		<script src="assets/jquery.scrollex.min.js"></script>
 		<script src="assets/skel.min.js"></script>
 		<script src="assets/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/respond.min.js"></script><![endif]-->
 		<script src="assets/parallax-main.js"></script>
 		<script src="assets/mmmaske.js"></script>
-		<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4JqdcmP6EY2-F9zQkd2a7Py0hYSb6Y9A"></script-->
-		<script>
-		$(document).ready(function(){
-				// resets the modal upon close so there is no need to write new markup for each modal dialog
-				$('body').on('hidden.bs.modal', '.modal', function () {
-					$(this).removeData('bs.modal');
-					$(".modal-content").html("<p class='loading-text'>Loading Content...</p>");
-				});
-
-								
-				particlesJS.load('background', 'assets/js/particles.json', function() {
-		        	console.log('callback - particles.js config loaded');
-	        	});
-			});
-
-			// needed for background images
-			// $(".spotlight").css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
-		</script>
 	</body>
 </html>
