@@ -4,8 +4,7 @@
 import Link from "next/link";
 
 type Blurb = {
-  key: number;
-  title: string;
+  key: string;
   content: string;
 };
 
@@ -13,18 +12,18 @@ type Blurb = {
 export default function Home() {
   const blurbCard:Blurb[] = [
     {
-      key: 1,
-      title: "Improve workflow",
+      key: "1",
+      key: "Improve workflow",
       content: "Technology is a force multiplier. I enjoy building tools intended to be used in day-to-day operations of small and medium businesses that make your operations more productive."
     },
     {
-      key: 2,
-      title: "Streamline information",
+      key: "2",
+      key: "Streamline information",
       content: "Collection, categorization, and visualization of raw data is fulfilling for me. The software I build intends to give you the building blocks to make informed decisions."
     },
     {
-      key: 3,
-      title: "Improve workflow",
+      key: "3",
+      key: "Improve workflow",
       content: "I will work with what you have to the best of my ability. Utilizing open-source applications, we can build something together that will pay for itself before you know it."
     },
   ]
@@ -61,7 +60,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blurbCard.map(blurb => (
               <div className="bg-red-950/50 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-2">{blurb.title}</h3>
+                <h3 className="text-xl font-semibold mb-2">{blurb.key}</h3>
                 <p className="text-gray-400">{blurb.content}</p>
               </div>
             ))}
