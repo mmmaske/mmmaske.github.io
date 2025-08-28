@@ -10,7 +10,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: 'export'
+  output: 'export',
+  turbopack: {
+    root: '.'
+  }
 };
 
 export default nextConfig;
