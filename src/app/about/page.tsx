@@ -51,7 +51,7 @@ export default function AboutPage() {
           {/* Use a placeholder image or your own profile picture */}
           <div className="w-48 h-48 rounded-full overflow-hidden mb-8 md:mb-0 md:mr-8">
             <Image
-              src="https://placehold.co/400x400/1C1C1C/FF3030?text=Profile+Image"
+              src="https://avatars.githubusercontent.com/u/8054622"
               width={400}
               height={400}
               alt="Profile Picture"
