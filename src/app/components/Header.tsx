@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Header() {
   return (
     <>
       <header className="top-bar justify-between sticky top-0 z-40">
-        <h1><Link href="/">M</Link></h1>
+        <h1><Link href="/"><Image src="favicon.svg" width="50" height="20" alt="M" /></Link></h1>
         <button
           className="hamburger-menu z-40"
           onClick={() => setIsOpen(!isOpen)}
