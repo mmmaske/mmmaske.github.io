@@ -1,0 +1,312 @@
+/* app/globals.css */
+
+
+@import "tailwindcss";
+
+/* CSS Variables for a clean, consistent palette */
+:root {
+  --background-color: #121212;
+  --text-color: #E0E0E0;
+  --accent-color: #ff3030;
+  --accent-color-light: #ff3333;
+  --accent-color-dark: #920000;
+  --grid-line-color: rgba(0, 255, 255, 0.05); /* Semi-transparent cyan grid lines */
+  --primary-font: 'Space Mono', monospace;
+  --secondary-font: sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--secondary-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+  position: relative;
+  --mouse-x: 50vw;
+  --mouse-y: 50vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  z-index: -2;
+  overflow: hidden;
+
+  background: repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 49px,
+      var(--grid-line-color) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 49px,
+      var(--grid-line-color) 50px
+    );
+  background-size: 50px 50px;
+  animation: grid-pan 120s linear infinite;
+  filter: blur(0.5px);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Placed above the grid but below all main content */
+
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 0, 0, 0.08) 0%, /* Reduced opacity from 0.15 to 0.08 */
+    rgba(0, 255, 255, 0) 15% /* Reduced size from 50% to 35% */
+  );
+  filter: blur(30px);
+  transition: background-position 0.1s linear;
+}
+
+/* Keyframe animation to slowly pan the grid background */
+@keyframes grid-pan {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%); /* Pans the grid from top-left to bottom-right */
+  }
+}
+
+
+/* Layout styles from previous versions */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-bar {
+  background-color: #1C1C1C;
+  border-bottom: 1px solid #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-family: var(--primary-font);
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+.menu {
+  width: 250px;
+  background-color: #1C1C1C;
+  border-right: 1px solid #333;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.menu a {
+  color: var(--text-color);
+  font-family: var(--primary-font);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu a:hover {
+  color: var(--accent-color-light);
+  text-shadow: 0 0 10px var(--accent-color-light);
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.hero-section {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.hero-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  filter: grayscale(100%) brightness(50%);
+}
+
+.hero-image-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 18, 18, 0.5),
+    rgba(18, 18, 18, 1)
+  );
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-content h2 {
+  font-family: var(--primary-font);
+  font-size: 3rem;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin-bottom: 1rem;
+  animation: pulse-glow 2s infinite alternate;
+}
+
+.hero-content p {
+  font-family: var(--primary-font);
+  font-size: 1.2rem;
+  color: #B0B0B0;
+}
+
+/* Keyframe animation for pulsing glow */
+@keyframes pulse-glow {
+  0% {
+    color: var(--accent-color-dark);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    color: var(--accent-color-light);
+    text-shadow: 0 0 15px var(--accent-color-light);
+  }
+}
+
+/* Project Grid and other new styles */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: #1C1C1C;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.project-card h4 {
+    margin-top: 0;
+    font-family: var(--primary-font);
+    color: var(--accent-color);
+}
+
+.project-card a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--primary-font);
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-family: var(--primary-font);
+    margin-bottom: 0.5rem;
+}
+
+  .hamburger-menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 1rem;
+    z-index: 100;
+  }
+
+  .hamburger-menu svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-color);
+  }
+
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .top-bar nav {
+    display: none;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-right: none;
+    background-color: rgba(18, 18, 18, 0.95);
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 5rem;
+    border-bottom: 1px solid #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+}
