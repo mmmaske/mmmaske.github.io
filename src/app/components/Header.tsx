@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { useAuth } from '../lib/auth-context';
 
 export default function Header() {
-  const { user, signOut } = useAuth(); // Use the useAuth hook to get user and signOut
+  const { user } = useAuth(); // Use the useAuth hook to get user and signOut
   const [isOpen, setIsOpen] = useState(false);
 
 
