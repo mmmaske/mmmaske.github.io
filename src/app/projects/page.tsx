@@ -40,7 +40,7 @@ const projectData: Project[] = [
     id: 3,
     title: 'Wedding RSVP and Information Site',
     description: 'Easily distributable e-vite.',
-    longDescription: 'My wife and I were married April of 2024. I designed and built a single-page-app as an invitation and RSVP form, utilizing Google Sheets API as a backend and Semaphore REST API for realtime SMS notifications for replies.',
+    longDescription: 'My wife and I were married April of 2024. I built a single-page-app on top of an existing design as an invitation and RSVP form, utilizing Google Sheets API as a backend and Semaphore REST API for realtime SMS notifications for replies.',
     imageSrc: '/nups.png',
     techStack: ['HTML', 'CSS', 'jQuery', 'REST API'],
     demoLink: 'https://mmmaske.com/nups',
@@ -67,7 +67,7 @@ const ProjectDetailsPage = ({ project, onBack }: ProjectDetailsPageProps) => (
       </svg>
       Go Back to Projects
     </button>
-    <div className="bg-gray-900 rounded-xl shadow-lg border border-gray-700 p-8">
+    <div className="bg-red-950/50 rounded-xl shadow-lg border border-gray-700 p-8">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
           <Image
@@ -118,7 +118,7 @@ const MmmaskeProjectDetails = ({ project, onBack }: ProjectDetailsPageProps) => 
       </svg>
       Go Back to Projects
     </button>
-    <div className="bg-gray-900 rounded-xl shadow-lg border border-gray-700 p-8">
+    <div className="bg-red-950/50 rounded-xl shadow-lg border border-gray-700 p-8">
       <div className="text-center">
         <Image
           src={project.imageSrc}
@@ -166,7 +166,7 @@ type ProjectCardProps = {
 const ProjectCard = ({ title, description, imageSrc, onClick }: ProjectCardProps) => {
   return (
     <div
-      className="relative group bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800 cursor-pointer hover:border-indigo-600 transition-all duration-300 transform hover:-translate-y-1"
+      className="relative group bg-red-950/50 rounded-xl overflow-hidden shadow-lg border border-gray-800 cursor-pointer hover:border-indigo-600 transition-all duration-300 transform hover:-translate-y-1"
       onClick={onClick}
     >
       <div className="w-full h-40 md:h-56 overflow-hidden">
