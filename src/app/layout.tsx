@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MouseGlowScript from './components/MouseGlowScript';
 import Header from "./components/Header";
+import { AuthProvider } from './lib/auth-context';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,12 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="layout-container">
-          <Header />
-          <div className="main-container">
-            {children}
+        <AuthProvider>
+          <div className="layout-container">
+            <Header />
+            <div className="main-container">
+              {children}
+            </div>
           </div>
-        </div>
+        </AuthProvider>
         <MouseGlowScript />
       </body>
     </html>

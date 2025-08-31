@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useAuth } from '../lib/auth-context';
 
 // Define the types for the props
 interface NavigationProps {
@@ -12,6 +13,8 @@ interface NavigationProps {
 }
 
 export default function Navigation({ isOpen, setIsOpen }: NavigationProps) {
+  const { user, signOut } = useAuth(); // Use the useAuth hook to get user and signOut
+
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -28,6 +31,20 @@ export default function Navigation({ isOpen, setIsOpen }: NavigationProps) {
       <Link href="/" onClick={handleClose}>Home</Link>
       <Link href="/about" onClick={handleClose}>About</Link>
       <Link href="/projects" onClick={handleClose}>Projects</Link>
+      {user ? (
+            <>
+              <Link
+                href="#"
+                onClick={signOut}
+              >
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <Link href="/login">
+              Sign In
+            </Link>
+          )}
       {/* <Link href="/contact" onClick={handleClose}>Contact</Link> */}
     </nav>
   );
