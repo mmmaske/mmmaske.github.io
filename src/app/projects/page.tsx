@@ -40,7 +40,7 @@ const projectData: Project[] = [
     id: 3,
     title: 'Wedding RSVP and Information Site',
     description: 'Easily distributable e-vite.',
-    longDescription: 'My wife and I were married April of 2024. I designed and built a single-page-app as an invitation and RSVP form, utilizing Google Sheets API as a backend and Semaphore REST API for realtime SMS notifications for replies.',
+    longDescription: 'My wife and I were married April of 2024. I built a single-page-app on top of an existing design as an invitation and RSVP form, utilizing Google Sheets API as a backend and Semaphore REST API for realtime SMS notifications for replies.',
     imageSrc: '/nups.png',
     techStack: ['HTML', 'CSS', 'jQuery', 'REST API'],
     demoLink: 'https://mmmaske.com/nups',
