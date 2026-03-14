@@ -67,7 +67,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Copy additional files
-        run: cp -r nups out/nups && cp -r mei-kier out/mei-kier
+        run: cp -r nups out/nups && cp -r mei-kier out/mei-kier && cp -r jean-merwin out/jean-merwin
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
