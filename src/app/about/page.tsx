@@ -1,121 +1,93 @@
 // app/about/page.tsx
 
-"use client";
-
-import React from "react";
+import HeroSection from "../components/HeroSection";
+import SectionDivider from "../components/SectionDivider";
+import TechTag from "../components/TechTag";
 import Image from "next/image";
 
+const professionalStack = ["Java", "Spring Boot", "PostgreSQL", "Kafka", "MQTT", "Docker", "Bash", "Makefile", "HTML", "CSS", "Git"];
+const personalStack = ["HTML", "CSS", "JavaScript", "Docker", "PHP", "Git", "Linux", "MQTT", "Home Assistant"];
+
 export default function AboutPage() {
-  const techStack = [
-    "Next.js",
-    "Angular",
-    "Firebase",
-    "JavaScript",
-    "TypeScript",
-    "Node.js",
-    "Bash Scripting",
-    "Tailwind CSS",
-    "HTML",
-    "CSS",
-    "REST APIs",
-    "Serverless Functions",
-    "PostgreSQL",
-    "MongoDB",
-    "Docker",
-    "Git",
-    "CI/CD",
-    "AWS"
-  ];
-  const neonColors = [
-    "bg-sky-500/20 text-sky-400 ring-sky-400/20",
-    "bg-teal-500/20 text-teal-400 ring-teal-400/20",
-    "bg-purple-500/20 text-purple-400 ring-purple-400/20",
-    "bg-fuchsia-500/20 text-fuchsia-400 ring-fuchsia-400/20",
-    "bg-emerald-500/20 text-emerald-400 ring-emerald-400/20",
-    "bg-lime-500/20 text-lime-400 ring-lime-400/20",
-  ];
-
   return (
-    <main className="content">
-      {/* Hero section for the About page */}
-      <div className="hero-section">
-        <div className="hero-content flex flex-col items-center md:items-start">
-          <h2 className="text-4xl font-bold mb-4">About Me</h2>
-          <p className="text-lg">A deep dive into my professional and personal journey.</p>
-        </div>
-      </div>
+    <div>
+      <HeroSection
+        title="About"
+        subtitle="Backend systems, infrastructure, and practical engineering."
+      />
 
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        {/* Profile Section */}
-        <section className="flex flex-col md:flex-row items-center md:items-start mb-12">
-          {/* Use a placeholder image or your own profile picture */}
-          <div className="w-48 h-48 rounded-full overflow-hidden mb-8 md:mb-0 md:mr-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionDivider />
+
+        <section className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 overflow-hidden" style={{ borderRadius: "4px", border: "1px solid var(--border)" }}>
             <Image
-              src="https://avatars.githubusercontent.com/u/8054622"
-              width={400}
-              height={400}
-              alt="Profile Picture"
-              className="object-cover w-full h-full"
+              src="/mmmaske.svg"
+              width={284}
+              height={120}
+              alt="mmmaske"
+              className="w-full h-full object-contain"
               unoptimized
             />
           </div>
-          <div className="text-gray-400">
-            <p className="text-lg">
-              Hello! I&apos;m an IT professional with a deep-seated passion for technology and a knack for solving complex problems. My journey began with a simple curiosity about how things work, leading me from a hobbyist to a professional who finds joy in crafting efficient and innovative solutions. I believe that a good solution costs less by using fewer resources for a better outcome - this mindset guides my work and my personal projects.
+          <div className="space-y-6">
+            <p className="text-lg leading-relaxed" style={{ color: "var(--text)" }}>
+              Mark Maske is a backend and integration software engineer with approximately 13 years of professional development experience. He specializes in backend systems, business-process digitization, automation, and distributed infrastructure.
             </p>
-            <p className="text-lg mt-4">
-              My interest in technology was initially sparked by my aptitude in computer classes, where I was taught the fundamentals of programming. This was paired with a deep enjoyment of playing games and immersing myself in virtual worlds. I have always been fascinated by the internet&apos;s power to connect people and provide access to so many different perspectives.
+            <p className="leading-relaxed" style={{ color: "var(--muted)" }}>
+              His career began in web development and evolved through building multi-module business systems — covering HR, payroll, accounting, maritime operations, and point-of-sale. He currently works on backend and integration systems for a banking technology client, building reusable microservice templates, data services, and event-driven processing pipelines.
             </p>
+            <p className="leading-relaxed" style={{ color: "var(--muted)" }}>
+              Outside work, he maintains a Docker-based homelab with roughly 45 containers across two hosts, self-hosted services, MQTT home automation, and local AI infrastructure. The engineering theme: build systems, run them, break them, debug them, improve them.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <TechTag name="Pulsar" context="current employer" />
+              <TechTag name="San Beda University" context="ICT degree" />
+              <TechTag name="Mid-senior" context="level" />
+            </div>
           </div>
         </section>
 
-        <hr className="my-12 border-gray-700" />
+        <SectionDivider />
 
-        {/* Professional Projects Section */}
-        <section className="mb-12">
-          <h3 className="text-3xl font-bold mb-6">Professional Projects</h3>
-          <div className="text-gray-400">
-            <p className="text-lg">
-              One of my most rewarding projects was developing a point-of-sale system for my family&apos;s laundromat. This system helps them and their staff efficiently manage their daily operations. A key challenge was creating a hardware interface to communicate with the laundry machines themselves, allowing the server to control and start washing cycles remotely. This project not only solved a real-world problem but also deepened my understanding of combining software with physical systems.
-            </p>
+        <section className="grid md:grid-cols-2 gap-8 md:gap-12">
+          <div>
+            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>Professional Stack</h2>
+            <div className="flex flex-wrap gap-2">
+              {professionalStack.map((tech) => (
+                <TechTag key={tech} name={tech} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>Personal / Homelab</h2>
+            <div className="flex flex-wrap gap-2">
+              {personalStack.map((tech) => (
+                <TechTag key={tech} name={tech} />
+              ))}
+            </div>
           </div>
         </section>
 
-        <hr className="my-12 border-gray-700" />
+        <SectionDivider />
 
-        {/* Tech Stack Section with Colorful Pills */}
-        <section className="mb-12">
-          <h3 className="text-3xl font-bold mb-6">Tech Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            {techStack.map((tech, index) => (
-              <span
-                key={tech}
-                className={`text-sm px-4 py-2 rounded-full ring-1 ${neonColors[index % neonColors.length]} cursor-pointer`}
-              >
-                {tech}
-              </span>
+        <section>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>Core Values</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {["Honesty", "Preparedness", "Resourcefulness", "Empathy"].map((value) => (
+              <div key={value} className="p-4" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px" }}>
+                <span className="font-mono text-sm" style={{ color: "var(--accent)" }}>{value}</span>
+              </div>
             ))}
           </div>
         </section>
 
-        <hr className="my-12 border-gray-700" />
+        <SectionDivider label="Contact" />
 
-        {/* Beyond the Code Section */}
-        <section>
-          <h3 className="text-3xl font-bold mb-6">Beyond the Code</h3>
-          <div className="text-gray-400">
-            <p className="text-lg">
-              I find balance and motivation in my personal life, anchored by my wife and three dogs, which helps foster a dedicated and well-rounded perspective. I enjoy staying active by cycling around Metro Manila (<i>Mabuhay!</i>) as a mode of transportation and getting to see the city from a different perspective. We also love to travel and experience new cultures, which has broadened my perspective both personally and professionally.
-            </p>
-            <p className="text-lg mt-4">
-              I also enjoy tinkering with server hardware and optimizing my home network setup. It&apos;s a rewarding challenge to build a reliable and fast system that my friends and family enjoy using.
-            </p>
-            <p className="text-lg mt-4">
-              I&apos;m an avid reader and enjoy exploring new concepts in science and technology. Staying up-to-date with the latest trends and innovations is not just a part of my job; it&apos;s a genuine passion.
-            </p>
-          </div>
-        </section>
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
+          <a href="mailto:admin@mmmaske.com" className="hover:underline" style={{ color: "var(--accent-2)" }}>admin@mmmaske.com</a>
+        </p>
       </div>
-    </main>
+    </div>
   );
 }

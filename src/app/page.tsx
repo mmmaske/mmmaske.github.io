@@ -1,69 +1,88 @@
 // app/page.tsx
 
 "use client";
+
+import HeroSection from "./components/HeroSection";
+import SectionDivider from "./components/SectionDivider";
+import CaseStudy from "./components/CaseStudy";
 import Link from "next/link";
-
-type Blurb = {
-  title: string;
-  content: string;
-};
-
+import TechTag from "./components/TechTag";
 
 export default function Home() {
-  const blurbCard:Blurb[] = [
-    {
-      title: "Improve workflow",
-      content: "Technology is a force multiplier. I enjoy building tools intended to be used in day-to-day operations of small and medium businesses that make your operations more productive."
-    },
-    {
-      title: "Streamline information",
-      content: "Collection, categorization, and visualization of raw data is fulfilling for me. The software I build intends to give you the building blocks to make informed decisions."
-    },
-    {
-      title: "Improve workflow",
-      content: "I will work with what you have to the best of my ability. Utilizing open-source applications, we can build something together that will pay for itself before you know it."
-    },
-  ]
-
   return (
-    <main className="content">
-      <div className="hero-section">
-        <div className="hero-content flex flex-col items-center md:items-start">
-          <h2 className="text-4xl font-bold mb-4">mmmaske</h2>
-          <p>Professional Developer. Amateur Systems Administrator. All-around Computer Dude.</p>
+    <div>
+      <HeroSection
+        title="Backend systems for messy real-world problems."
+        subtitle="Backend & Integration Software Engineer — Business systems · APIs · Messaging · Automation"
+      >
+        <div className="mt-8 flex flex-wrap gap-3">
+          <TechTag name="Java" context="Spring Boot" />
+          <TechTag name="Kafka" context="event-driven pipelines" />
+          <TechTag name="PostgreSQL" context="data services" />
+          <TechTag name="Docker" context="containerized infrastructure" />
+          <TechTag name="MQTT" context="messaging & automation" />
+          <TechTag name="Cloudflare Tunnel" context="CGNAT access" />
+          <TechTag name="Tailscale" context="private network" />
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        {/* About Me Section */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">About Me</h2>
-          <p className="text-lg text-gray-400">
-            You&apos;ve reached my homepage. I am an I.T. professional, and I enjoy working up efficient and inventive solutions to wasteful problems.
-          </p>
-          <p className="text-lg text-gray-400 mt-4">
-            Specializing in backend and web development, I&apos;ve implemented applications for both small and medium businesses ranging from static single-page-apps to point-of-sale stations to multiple department encompassing business automation systems.
-          </p>
-          <p className="text-lg text-gray-400 mt-4">
-            When I&apos;m not coding, I tinker with servers and network infrastructure as a hobby. I manage my own web servers, automate tasks with scripts, and enjoy optimizing systems for functionality and effective improvement in my day-to-day.
-          </p>
-          <p className="text-lg text-gray-400 mt-4">
-            I can be reached at <Link href="mailto:admin@mmmaske.com?subject=Hello">admin@mmmaske.com</Link> for any immediate concerns.
-          </p>
-        </section>
+      </HeroSection>
 
-        {/* What I Do Section */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">What I Do</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blurbCard.map((blurb,index) => (
-              <div key={index} className="bg-red-950/50 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-2">{blurb.title}</h3>
-                <p className="text-gray-400">{blurb.content}</p>
-              </div>
-            ))}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionDivider />
+
+        <section className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 py-8">
+          <h2
+            className="text-2xl md:text-3xl font-bold md:sticky md:top-24 md:self-start"
+            style={{ color: "var(--text)" }}
+          >
+            What I Do
+          </h2>
+          <div className="space-y-6">
+            <p className="leading-relaxed text-lg" style={{ color: "var(--text)" }}>
+              I take complicated, partly manual business processes and turn them into integrated software workflows. My work sits at the intersection of backend engineering, business automation, and distributed systems.
+            </p>
+            <p className="leading-relaxed text-lg" style={{ color: "var(--muted)" }}>
+              Currently building and customizing reusable microservice templates, data services, and event-driven processing pipelines for a banking technology client. Previously, I spent years digitizing operations across HR, payroll, accounting, maritime logistics, and retail POS.
+            </p>
+            <p className="leading-relaxed text-lg" style={{ color: "var(--muted)" }}>
+              Outside work, I run a Docker-based homelab as a practical engineering playground — hosting services, experimenting with networking, automation, local AI, and self-hosted infrastructure under real resource constraints.
+            </p>
           </div>
         </section>
+
+        <SectionDivider label="Selected Work" />
+
+        <CaseStudy
+          title="Banking Event Aggregation"
+          problem="A banking client needed to aggregate messages arriving through a Kafka queue. Processing every message independently introduced unnecessary latency because each required a JWT, and the client imposed rate limits on JWT usage."
+          constraints="JWT rate limits from the client. Throughput and latency sensitivity. The bank designed the solution; Mark's team implemented it and provided documentation."
+          approach="Aggregation approach allowing multiple messages to share a single JWT, enabling batch processing and reducing token-related overhead."
+          implementation="Secondary programmer on the implementation. Worked on the team's implementation that was deployed for the client."
+          tags={["Java", "Kafka", "PostgreSQL", "Spring Boot"]}
+        />
+
+        <SectionDivider label="More Projects" />
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <Link href="/projects" className="block p-6 transition-all duration-200 hover:border" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px" }} onMouseEnter={(e) => e.currentTarget.style.borderColor = "var(--accent)"} onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border)"}>
+            <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>View All Projects</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>Case studies on the laundromat POS, logistics platform, and homelab infrastructure experiments.</p>
+          </Link>
+          <Link href="/lab" className="block p-6 transition-all duration-200 hover:border" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px" }} onMouseEnter={(e) => e.currentTarget.style.borderColor = "var(--accent)"} onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border)"}>
+            <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>Explore the Lab</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>Homelab infrastructure, self-hosted services, Docker, CGNAT workarounds, and automation experiments.</p>
+          </Link>
+          <Link href="/work" className="block p-6 transition-all duration-200 hover:border" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px" }} onMouseEnter={(e) => e.currentTarget.style.borderColor = "var(--accent)"} onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border)"}>
+            <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>Career History</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>13 years of professional development across web, backend, business automation, and integration systems.</p>
+          </Link>
+          <Link href="/writing" className="block p-6 transition-all duration-200 hover:border" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px" }} onMouseEnter={(e) => e.currentTarget.style.borderColor = "var(--accent)"} onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border)"}>
+            <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>Technical Writing</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>Write-ups on Docker, MQTT, Cloudflare Tunnel, Tailscale, local AI, and infrastructure troubleshooting.</p>
+          </Link>
+        </div>
+
+        <SectionDivider />
       </div>
-    </main>
+    </div>
   );
 }

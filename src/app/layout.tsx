@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MouseGlowScript from './components/MouseGlowScript';
 import Header from "./components/Header";
 
 const geistSans = Geist({
@@ -17,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "mmmaske",
-  description: "Professional developer and digital tinkerer",
+  description: "Backend systems for messy real-world problems.",
   icons: {
     icon: '/favicon.svg',
   },
@@ -30,16 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="layout-container">
-          <Header />
-          <div className="main-container">
-            {children}
-          </div>
-        </div>
-        <MouseGlowScript />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Header />
+        <main className="relative z-10">
+          {children}
+        </main>
       </body>
     </html>
   );
