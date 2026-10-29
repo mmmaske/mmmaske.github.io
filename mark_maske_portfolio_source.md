@@ -34,8 +34,8 @@ The portfolio should emphasize **evidence of things built and solved**, rather t
 
 ### Current / Recent Work
 
-**Role:** Software Engineer  
-**Company:** `<COMPANY>`  
+**Role:** Software Engineer
+**Company:** `<COMPANY>`
 **Start date:** July 2025
 
 ### Career History
@@ -97,7 +97,7 @@ This project is especially useful as evidence of end-to-end practical software d
 ### Current Work
 
 
-A normal week consists of working at a desk with teammates to complete engineering tasks for one of the company's clients: a banking contractor.
+A normal week consists of working with teammates to complete engineering tasks for one of the company's clients: an overseas banking contractor.
 
 The client's platform reads banking data such as accounts, transactions, goals, and points. The engineering work involves turning that data into usable microservices and custom hooks that satisfy client-specific business rules.
 
